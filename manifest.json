@@ -1,0 +1,17 @@
+{
+  "name": "VIPT CUP IV 2026",
+  "short_name": "VIPT CUP",
+  "description": "Sport • Friendship • Together — Game mobile turnamen olahraga antar-RT.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0A1128",
+  "theme_color": "#0A1128",
+  "icons": [
+    {
+      "src": "./assets/images/vipt-cup-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

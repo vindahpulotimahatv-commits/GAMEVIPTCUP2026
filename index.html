@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+<title>VIPT CUP IV 2026</title>
+<meta name="description" content="VIPT CUP IV 2026 — Sport, Friendship, Together. Game mobile turnamen olahraga antar-RT." />
+<meta name="theme-color" content="#0A1128" />
+<link rel="manifest" href="./manifest.json" />
+<link rel="icon" href="./assets/images/vipt-cup-logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/style.css" />
+<link rel="stylesheet" href="./css/menu.css" />
+</head>
+<body>
+
+<div id="app">
+
+  <!-- Tombol debug reset -->
+  <button id="btn-reset-data">RESET DATA</button>
+
+  <!-- ============================================
+       1. SPLASH SCREEN
+  ============================================= -->
+  <section id="screen-splash" class="screen screen--active">
+    <div class="splash__stadium-lights"></div>
+    <div class="splash__particles"></div>
+
+    <div class="splash__content">
+      <img src="./assets/images/vipt-cup-logo.png" alt="Logo VIPT CUP IV 2026" class="splash__logo" />
+      <h1 class="splash__title">
+        VIPT CUP IV
+        <span>2026</span>
+      </h1>
+      <p class="splash__tagline">Sport • Friendship • Together</p>
+    </div>
+
+    <div class="splash__footer">
+      <button id="btn-mulai-splash" class="btn-primary btn-block">▶ MULAI</button>
+      <span class="splash__version">Villa Indah Pulo Timaha</span>
+    </div>
+  </section>
+
+  <!-- ============================================
+       2. HOME
+  ============================================= -->
+  <section id="screen-home" class="screen">
+    <div class="home-header">
+      <img src="./assets/images/vipt-cup-logo.png" alt="VIPT CUP" class="home-header__logo" />
+      <span class="home-header__event">VIPT CUP IV 2026</span>
+    </div>
+
+    <div class="player-profile glass">
+      <div class="player-profile__avatar">R</div>
+      <div class="player-profile__info">
+        <div class="player-profile__name" id="home-player-name">Rendi</div>
+        <div class="player-profile__level" id="home-player-level">LV. 5</div>
+      </div>
+      <div class="player-profile__resources">
+        <span class="resource-pill">🪙 <span id="home-coin">500</span></span>
+        <span class="resource-pill">✨ <span id="home-xp">50</span></span>
+      </div>
+    </div>
+
+    <div class="home-menu">
+      <button id="home-menu-badminton" class="home-menu__item glass">
+        <span class="home-menu__icon">🏸</span>
+        <span class="home-menu__label">BADMINTON</span>
+      </button>
+      <button class="home-menu__item glass">
+        <span class="home-menu__icon">🏐</span>
+        <span class="home-menu__label">VOLI</span>
+        <span class="home-menu__soon">SEGERA HADIR</span>
+      </button>
+      <button class="home-menu__item glass">
+        <span class="home-menu__icon">⚽</span>
+        <span class="home-menu__label">FUTSAL</span>
+        <span class="home-menu__soon">SEGERA HADIR</span>
+      </button>
+      <button id="home-menu-tournament" class="home-menu__item home-menu__item--wide glass">
+        <span class="home-menu__icon">🏆</span>
+        <span class="home-menu__label">TOURNAMENT</span>
+      </button>
+    </div>
+
+    <nav class="bottom-nav">
+      <button class="bottom-nav__item bottom-nav__item--active" data-screen="screen-home"><span class="icon">🏠</span>HOME</button>
+      <button class="bottom-nav__item" data-screen="screen-pilih-tim"><span class="icon">👥</span>TIM</button>
+      <button class="bottom-nav__item" data-screen="screen-ranking"><span class="icon">📊</span>RANK</button>
+      <button class="bottom-nav__item" data-screen="screen-hadiah"><span class="icon">🎁</span>HADIAH</button>
+    </nav>
+  </section>
+
+  <!-- ============================================
+       3. PILIH OLAHRAGA
+  ============================================= -->
+  <section id="screen-pilih-olahraga" class="screen">
+    <div class="screen-header">
+      <button class="screen-header__back" data-back>←</button>
+      <span class="screen-header__title">PILIH OLAHRAGA</span>
+    </div>
+    <div id="sport-list"></div>
+  </section>
+
+  <!-- ============================================
+       4. PILIH TIM
+  ============================================= -->
+  <section id="screen-pilih-tim" class="screen">
+    <div class="screen-header">
+      <button class="screen-header__back" data-back>←</button>
+      <span class="screen-header__title">PILIH TIM</span>
+    </div>
+    <div id="team-list"></div>
+    <div class="screen-footer">
+      <button id="btn-tim-lanjut" class="btn-primary btn-block">LANJUT</button>
+    </div>
+  </section>
+
+  <!-- ============================================
+       5. PILIH PEMAIN
+  ============================================= -->
+  <section id="screen-pilih-pemain" class="screen">
+    <div class="screen-header">
+      <button class="screen-header__back" data-back>←</button>
+      <span class="screen-header__title">PILIH PEMAIN <span id="pemain-team-name"></span></span>
+    </div>
+    <div id="player-list"></div>
+    <div class="screen-footer">
+      <button id="btn-pemain-lanjut" class="btn-primary btn-block">LANJUT</button>
+    </div>
+  </section>
+
+  <!-- ============================================
+       6. PERSIAPAN PERTANDINGAN
+  ============================================= -->
+  <section id="screen-persiapan" class="screen">
+    <div class="screen-header">
+      <button class="screen-header__back" data-back>←</button>
+      <span class="screen-header__title">PERSIAPAN PERTANDINGAN</span>
+    </div>
+    <p class="persiapan-label">BADMINTON PUTRA — PENYISIHAN GRUP</p>
+
+    <div class="persiapan-vs glass">
+      <div class="persiapan-vs__team">
+        <span class="persiapan-vs__jersey" id="persiapan-team-a-jersey"></span>
+        <span class="persiapan-vs__name" id="persiapan-team-a-name">RT 08</span>
+      </div>
+      <span class="persiapan-vs__divider">VS</span>
+      <div class="persiapan-vs__team">
+        <span class="persiapan-vs__jersey" id="persiapan-team-b-jersey" style="background:#FF3B3B;"></span>
+        <span class="persiapan-vs__name" id="persiapan-team-b-name">RT 09</span>
+      </div>
+    </div>
+
+    <p class="persiapan-roster-title">ROSTER TIM</p>
+    <ul id="persiapan-roster"></ul>
+
+    <div class="screen-footer">
+      <button id="btn-mulai-pertandingan" class="btn-primary btn-block">MULAI PERTANDINGAN</button>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PLACEHOLDER: RANKING (dibangun penuh di TAHAP 4)
+  ============================================= -->
+  <section id="screen-ranking" class="screen">
+    <div class="screen-header">
+      <button class="screen-header__back" data-back>←</button>
+      <span class="screen-header__title">RANKING TURNAMEN</span>
+    </div>
+    <p style="padding:20px;color:var(--text-dim);">Fitur ranking lengkap akan dibangun di TAHAP 4.</p>
+  </section>
+
+  <!-- ============================================
+       PLACEHOLDER: HADIAH (dibangun penuh di TAHAP 4)
+  ============================================= -->
+  <section id="screen-hadiah" class="screen">
+    <div class="screen-header">
+      <button class="screen-header__back" data-back>←</button>
+      <span class="screen-header__title">HADIAH</span>
+    </div>
+    <p style="padding:20px;color:var(--text-dim);">Fitur hadiah lengkap akan dibangun di TAHAP 4.</p>
+  </section>
+
+</div>
+
+<script src="./js/data.js"></script>
+<script src="./js/storage.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/ui.js"></script>
+<script src="./js/app.js"></script>
+</body>
+</html>
